@@ -5,7 +5,7 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-// Swagger configuration
+  // Swagger configuration
   const config = new DocumentBuilder()
     .setTitle('Customer API')
     .setDescription('Customer API description')

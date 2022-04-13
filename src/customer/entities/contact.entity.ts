@@ -1,19 +1,25 @@
-import { Column, Entity,JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Customer } from './customer.entity';
 @Entity()
-export class Contact{
+export class Contact {
+  @PrimaryGeneratedColumn()
+  id: number;
+  @Column({ nullable: true })
+  email: string;
+  @Column({ nullable: true })
+  phone: string;
+  @Column({ nullable: true })
+  mobile: string;
 
-    @PrimaryGeneratedColumn()
-    id: number;
-    @Column()
-    email: string;
-    @Column()
-    phone: string;
-    @Column()
-    mobile: string;
-
-    @OneToOne(() => Customer,customer=>customer.contact,{ onDelete: 'CASCADE' })
-    @JoinColumn({ name: "user_id" })
-    customer: Customer;
-
+  @OneToOne(() => Customer, (customer) => customer.contact, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'user_id' })
+  customer: Customer;
 }

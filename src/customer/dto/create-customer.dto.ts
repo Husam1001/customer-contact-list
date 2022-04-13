@@ -1,7 +1,11 @@
-import { OneToOne } from 'typeorm';
-import { Contact } from '../entities/contact.entity';
+import { ApiProperty } from '@nestjs/swagger';
+import { CreateContactDto } from './create-contact.dto';
 
 export class CreateCustomerDto {
-   readonly name: string;
-   readonly contact:Contact;
+  @ApiProperty({ description: 'customer name', example: 'John Doe' })
+  readonly name: string;
+  @ApiProperty({
+    type: CreateContactDto,
+  })
+  readonly contact: CreateContactDto;
 }

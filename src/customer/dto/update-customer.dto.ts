@@ -1,5 +1,10 @@
-import { Contact } from '../entities/contact.entity';
+import { ApiProperty } from '@nestjs/swagger';
+import { UpdateContactDto } from './update-contact.dto';
 export class UpdateCustomerDto {
-    readonly name?: string;
-    readonly contact?:Contact;
+  @ApiProperty({ description: 'customer name', example: 'John Doe' })
+  readonly name?: string;
+  @ApiProperty({
+    type: UpdateContactDto,
+  })
+  readonly contact?: UpdateContactDto;
 }
